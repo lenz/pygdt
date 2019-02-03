@@ -7,10 +7,21 @@ class GDTRecord(object):
         self.fields = None
 
         self.field_map = {
-            8000: ('type', int),
-            9218: ('version', float),
-            3101: ('last_name', str),
-            3102: ('first_name', str)
+            8000: ('sentence_id', int),
+            8010: ('sentence_length', int),
+            9218: ('gdt_version', float),
+            
+            3000: ('patient_id', str),
+            3101: ('patient_last_name', str),
+            3102: ('patient_first_name', str),
+            3003: ('patient_birth_date', str),
+            3110: ('patient_sex', str),
+
+            6200: ('data_date', str),
+            6201: ('data_time', str),
+            8402: ('device', str),
+            8432: ('reading_date', str),
+            8439: ('reading_time', str),
         }
 
     def read_file(self, path):
@@ -49,7 +60,7 @@ class GDTRecord(object):
         from pprint import pprint
 
         for value in self.field_map.values():
-            print("%s: %s" % (value[0], getattr(self, value[0], "")))
+            print("{}: {}".format(value[0], getattr(self, value[0], "")))
         print("Raw data:")
         for f in self.fields.items():
             pprint(f)

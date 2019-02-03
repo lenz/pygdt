@@ -1,7 +1,7 @@
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-from models import GDTRecord
+from pygdt.models import GDTRecord
 
 import time
 
