@@ -64,3 +64,4 @@ class GDTRecord(object):
         print("Raw data:")
         for f in self.fields.items():
             pprint(f)
+        print("")
