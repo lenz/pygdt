@@ -1,5 +1,5 @@
 from collections import OrderedDict
-
+import time
 
 class GDTRecord(object):
 
@@ -26,7 +26,15 @@ class GDTRecord(object):
 
     def read_file(self, path):
         fields = []
-        for line in open(path, 'r'):
+        
+        try:
+            file = open(path, 'r')
+        except PermissionError:
+            # TODO: make this Windows fix more robust - 5 retries
+            time.sleep(1)
+            file = open(path, 'r')
+
+        for line in file:
             fields += (self.parse_line(line),)
         self.fields = OrderedDict(fields)
         self.parse_data()
