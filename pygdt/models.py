@@ -28,13 +28,20 @@ class GDTRecord(object):
         fields = []
         
         try:
-            file = open(path, 'r')
+            raw_data = open(path, 'rb').read()
         except PermissionError:
             # TODO: make this Windows fix more robust - 5 retries
             time.sleep(1)
-            file = open(path, 'r')
+            raw_data = open(path, 'rb').read()
 
-        for line in file:
+        
+        #TODO: make configurable 'utf-8', 'latin-1', 'cp437'
+        try:
+            data = raw_data.decode('latin-1')
+        except UnicodeDecodeError:
+            raise
+
+        for line in data.splitlines():
             fields += (self.parse_line(line),)
         self.fields = OrderedDict(fields)
         self.parse_data()
