@@ -15,7 +15,7 @@ class GDTRecord(object):
             3000: ('patient_id', str),
             3101: ('patient_last_name', str),
             3102: ('patient_first_name', str),
-            3003: ('patient_birth_date', str),
+            3103: ('patient_birth_date', str),
             3110: ('patient_sex', str),
 
             6200: ('data_date', str),
