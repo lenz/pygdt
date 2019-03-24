@@ -17,6 +17,7 @@ setup(
     },
     install_requires=[
         'watchdog',
+        'python-slugify'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

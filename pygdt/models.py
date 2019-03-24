@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import time
 
+
 class GDTRecord(object):
 
     def __init__(self):
@@ -10,7 +11,7 @@ class GDTRecord(object):
             8000: ('sentence_id', int),
             8010: ('sentence_length', int),
             9218: ('gdt_version', float),
-            
+
             3000: ('patient_id', str),
             3101: ('patient_last_name', str),
             3102: ('patient_first_name', str),
@@ -26,7 +27,7 @@ class GDTRecord(object):
 
     def read_file(self, path):
         fields = []
-        
+
         try:
             raw_data = open(path, 'rb').read()
         except PermissionError:
@@ -34,8 +35,7 @@ class GDTRecord(object):
             time.sleep(1)
             raw_data = open(path, 'rb').read()
 
-        
-        #TODO: make configurable 'utf-8', 'latin-1', 'cp437'
+        # TODO: make configurable 'utf-8', 'latin-1', 'cp437'
         try:
             data = raw_data.decode('latin-1')
         except UnicodeDecodeError:
