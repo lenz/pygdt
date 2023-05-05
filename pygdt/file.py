@@ -27,7 +27,6 @@ class GDTFileHandler(FileSystemEventHandler):
         event.src_path
             path/to/observed/file
         """
-        print(event)
         if event.is_directory:
             return
         if event.event_type not in ['modified', 'created']:
